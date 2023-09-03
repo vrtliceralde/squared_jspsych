@@ -6,14 +6,14 @@ For questions about the task in general, please refer to the original [Burgoyne 
 
 Please cite this version of the task as follows:
 
-Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych [Computer software]. 
+Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://zenodo.org/badge/latestdoi/686735951
 
 ```
 @misc{liceralde23squared,
   author = {Van Rynald T. Liceralde and Alexander P. Burgoyne},
   year = {2023},
   title = {Squared tasks of attention control for {jsPsych}},
-  howpublished = {\url{}}
+  howpublished = {\url{https://zenodo.org/badge/latestdoi/686735951}}
 }
 ```
 
