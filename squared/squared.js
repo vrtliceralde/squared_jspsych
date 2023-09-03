@@ -9,9 +9,9 @@
 			  response was correct
 
 References:
-Liceralde, V.R.T. & Burgoyne, A.P. Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://zenodo.org/badge/latestdoi/686735951
+Liceralde, V.R.T. & Burgoyne, A.P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://zenodo.org/badge/latestdoi/686735951
 
-Burgoyne, A.P., Tsukahara, J.S., Mashburn, C.A., Pak, R., Engle, R.W. (2023). Nature and measurement of attention control. Journal of Experimental Psychology: General. 152(8), 2369-2402. https://doi.org/10.1037/xge0001408
+Burgoyne, A.P., Tsukahara, J.S., Mashburn, C.A., Pak, R., & Engle, R.W. (2023). Nature and measurement of attention control. Journal of Experimental Psychology: General. 152(8), 2369-2402. https://doi.org/10.1037/xge0001408
 (under review when task was first ported by VL)
 
 /*
@@ -19,11 +19,11 @@ Overview:
 This is a jsPsych implementation of the new squared tasks of attention control from Burgoyne et al.
 For each task, a 30-second practice block is given, followed by a 90-second main block.
 For the Stroop squared: Participants have to determine the color of the prompt and click on the word
-whose meaning corresponds to the prompt's color. For the Flanker squared: Participants are given a 
+whose meaning corresponds to the prompt's color. For the Flanker squared: Participants are given a
 choice of two arrow sets and they have to click the arrow set whose center arrow points in the same
 direction as the flanking arrows in the prompt. For the Simon squared: Participants are shown an
 arrow prompt at the left or right of the screen, and they have to click on the word that indicates
-the direction that the arrow prompt is pointing (not its location).  
+the direction that the arrow prompt is pointing (not its location).
 
 To Use:
 1. Load this js file in your html file (here, it's squared.html).
@@ -75,7 +75,7 @@ function countdown(start, timelimit) {
 	var timeleft_bar = document.getElementById("timeleft");
 	var timeleft_width = (timelimit - (Date.now() - start))*100/timelimit;
 	timeleft_bar.style.width = timeleft_width + "%";
-	
+
 	function shorten_timebar() {
 		if (timeleft_width <= 0) {
 			clearInterval(update_timeleft)
@@ -170,16 +170,16 @@ var stimuli_stroop = [
 	{stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#0000FF", resp2: "RED", resp2color: "#ff0302", correct_response: 1, condition: 3},
 	{stim: "BLUE", stimcolor: "#ff0302", resp1: "RED", resp1color: "#ff0302", resp2: "BLUE", resp2color: "#0000FF", correct_response: 0, condition: 3},
 	{stim: "RED", stimcolor: "#0000FF", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 1, condition: 4},
-	{stim: "RED", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 0, condition: 4},	
+	{stim: "RED", stimcolor: "#0000FF", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 0, condition: 4},
 	{stim: "BLUE", stimcolor: "#ff0302", resp1: "RED", resp1color: "#0000FF", resp2: "BLUE", resp2color: "#ff0302", correct_response: 0, condition: 4},
-	{stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 1, condition: 4}	
+	{stim: "BLUE", stimcolor: "#ff0302", resp1: "BLUE", resp1color: "#ff0302", resp2: "RED", resp2color: "#0000FF", correct_response: 1, condition: 4}
 ]
 
 // 2. Create fixed random order of trials for practice and main phases of task (practice_stroop, main_stroop)
 var practice_stroop = jsPsych.randomization.sampleWithReplacement(items_stroop, 100);
 var main_stroop = jsPsych.randomization.sampleWithReplacement(items_stroop, 500);
 
-// 3a.1 
+// 3a.1
 var instructions_stroop_1 = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: `<p style='font-size: 15pt; text-align: left;'>See what color the top word is. Select that color from the two options below. DON'T<br>
@@ -223,7 +223,7 @@ var intro_stroop = {
 	loop_function: function() {
 		return stay;
 	},
-	on_timeline_end: function() {	
+	on_timeline_end: function() {
 		stay = 1;
 	}
 }
@@ -310,10 +310,10 @@ var createStroopBlock = function(stroop) {
 		button_html: function() {
 			var resp1color = stimuli_stroop[stroop[block_trial_count]].resp1color;
 			var resp2color = stimuli_stroop[stroop[block_trial_count]].resp2color;
-	
+
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: ' + resp1color + ';"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div>%choice%</button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: ' + resp2color + ';"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div>%choice%</button>'
-			
+
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
@@ -321,20 +321,20 @@ var createStroopBlock = function(stroop) {
 			// Set up timer if it's the first trial
 			if (block_trial_count == 0) {
 				block_time_limit = practice == 1 ? practice_duration : main_duration;
-				block_start = Date.now();			
-	
+				block_start = Date.now();
+
 				end_timer = setTimeout(function() {
-	
+
 					block_trial_count = 0;
 					timeout = 1;
-					
+
 					// console.log("Block timed out at this trial", block_trial_count, timeout); // Here to debug
-							
+
 					// this function is all you need to end the current timeline
 					jsPsych.endCurrentTimeline();
-					
+
 				}, block_time_limit);
-			}		
+			}
 		},
 		on_load: function() {
 			countdown(block_start, block_time_limit);
@@ -365,11 +365,11 @@ var createStroopBlock = function(stroop) {
 			}
 
 			data.score_after_trial = total_stroop;
-			
+
 			// console.log(data, block_time_limit - (Date.now()-block_start), (Date.now() - block_start)) // Here to debug
 		}
 	}
-	
+
 	var feedback_stroop = {
 		type: jsPsychHtmlButtonResponse,
 		stimulus: function() { return display_stroop(stroop[block_trial_count]); },
@@ -379,7 +379,7 @@ var createStroopBlock = function(stroop) {
 			var resp2color = stimuli_stroop[stroop[block_trial_count]].resp2color;
 			var resp = jsPsych.data.get().last(1).values()[0].response;
 			var correct_response = jsPsych.data.get().last(1).values()[0].correct_response;
-	
+
 			switch (resp) {
 				case 0:
 					var feedback1 = correct_response == 0 ? '<div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>' : '<div style="color: red; font-size: 34pt; font-weight: 200;">&#10008;</div>';
@@ -390,10 +390,10 @@ var createStroopBlock = function(stroop) {
 					var feedback2 = correct_response == 1 ? '<div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>' : '<div style="color: red; font-size: 34pt; font-weight: 200;">&#10008;</div>';
 					break;
 			}
-	
+
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: ' + resp1color + ';">' + feedback1 + '%choice%</button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: ' + resp2color + ';">' + feedback2 + '%choice%</button>'
-	
+
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
@@ -402,12 +402,12 @@ var createStroopBlock = function(stroop) {
 		},
 		on_load: function() {
 			countdown(block_start, block_time_limit);
-			
+
 		},
 		trial_duration: 500,
 		response_ends_trial: false
 	}
-	
+
 	var block_stroop = {
 		timeline: [trial_stroop, feedback_stroop],
 		loop_function: function() {
@@ -521,9 +521,9 @@ var stimuli_flanker = [
 	{stim: ml_fr, stimsign: ">><>>", resp1: al, resp1sign: "<<<<<", resp2: ar, resp2sign: ">>>>>", correct_response: 1, condition: 3},
 	{stim: ml_fr, stimsign: ">><>>", resp1: ar, resp1sign: ">>>>>", resp2: al, resp2sign: "<<<<<", correct_response: 0, condition: 3},
 	{stim: mr_fl, stimsign: "<<><<", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 1, condition: 4},
-	{stim: mr_fl, stimsign: "<<><<", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 0, condition: 4},	
+	{stim: mr_fl, stimsign: "<<><<", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 0, condition: 4},
 	{stim: ml_fr, stimsign: ">><>>", resp1: mr_fl, resp1sign: "<<><<", resp2: ml_fr, resp2sign: ">><>>", correct_response: 0, condition: 4},
-	{stim: ml_fr, stimsign: ">><>>", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 1, condition: 4}	
+	{stim: ml_fr, stimsign: ">><>>", resp1: ml_fr, resp1sign: ">><>>", resp2: mr_fl, resp2sign: "<<><<", correct_response: 1, condition: 4}
 ]
 
 // 2. Create fixed random order of trials for practice and main phases of task (practice_flanker, main_flanker)
@@ -531,7 +531,7 @@ var practice_flanker = jsPsych.randomization.sampleWithReplacement(items_flanker
 var main_flanker = jsPsych.randomization.sampleWithReplacement(items_flanker, 500);
 
 
-// 3a.1 
+// 3a.1
 var instructions_flanker_1 = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: `<p style='font-size: 15pt; text-align: left;'>See what direction the outside arrows are pointing. From the two options below<br>
@@ -651,7 +651,7 @@ var createFlankerBlock = function(flanker) {
 		button_html: function() {
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div><img src=%choice% width="290"></button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div><img src=%choice% width="290"></button>'
-			
+
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
@@ -659,20 +659,20 @@ var createFlankerBlock = function(flanker) {
 			// Set up timer if it's the first trial
 			if (block_trial_count == 0) {
 				block_time_limit = practice == 1 ? practice_duration : main_duration;
-				block_start = Date.now();			
-	
+				block_start = Date.now();
+
 				end_timer = setTimeout(function() {
-	
+
 					block_trial_count = 0;
 					timeout = 1;
-					
+
 					// console.log("Block timed out at this trial", block_trial_count, timeout); // Here to debug
-							
+
 					// this function is all you need to end the current timeline
 					jsPsych.endCurrentTimeline();
-					
+
 				}, block_time_limit);
-			}		
+			}
 		},
 		on_load: function() {
 			countdown(block_start, block_time_limit);
@@ -700,11 +700,11 @@ var createFlankerBlock = function(flanker) {
 			}
 
 			data.score_after_trial = total_flanker;
-			
+
 			// console.log(data, block_time_limit - (Date.now()-block_start), (Date.now() - block_start)) // Here to debug
 		}
 	}
-	
+
 	var feedback_flanker = {
 		type: jsPsychHtmlButtonResponse,
 		stimulus: function() { return display_flanker(flanker[block_trial_count]); },
@@ -712,7 +712,7 @@ var createFlankerBlock = function(flanker) {
 		button_html: function() {
 			var resp = jsPsych.data.get().last(1).values()[0].response;
 			var correct_response = jsPsych.data.get().last(1).values()[0].correct_response;
-	
+
 			switch (resp) {
 				case 0:
 					var feedback1 = correct_response == 0 ? '<div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>' : '<div style="color: red; font-size: 34pt; font-weight: 200;">&#10008;</div>';
@@ -723,10 +723,10 @@ var createFlankerBlock = function(flanker) {
 					var feedback2 = correct_response == 1 ? '<div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>' : '<div style="color: red; font-size: 34pt; font-weight: 200;">&#10008;</div>';
 					break;
 			}
-	
+
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: #0000FF;">' + feedback1 + '<img src=%choice% width="290"></button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: #0000FF;">' + feedback2 + '<img src=%choice% width="290"></button>'
-	
+
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
@@ -739,7 +739,7 @@ var createFlankerBlock = function(flanker) {
 		trial_duration: 500,
 		response_ends_trial: false
 	}
-	
+
 	var block_flanker = {
 		timeline: [trial_flanker, feedback_flanker],
 		loop_function: function() {
@@ -846,7 +846,7 @@ var stimuli_simon = [
 var practice_simon = jsPsych.randomization.sampleWithReplacement(items_simon, 100);
 var main_simon = jsPsych.randomization.sampleWithReplacement(items_simon, 500);
 
-// 3a.1 
+// 3a.1
 var instructions_simon_1 = {
 	type: jsPsychHtmlButtonResponse,
 	stimulus: `<p style='font-size: 15pt; text-align: left;'>Arrows will appear below, on the right or the left. You must click the response option that<br>
@@ -964,7 +964,7 @@ var createSimonBlock = function(simon) {
 		button_html: function() {
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: white;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div>%choice%</button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: white;"><div style="color: black; font-size: 34pt; font-weight: 200;">_</div>%choice%</button>'
-			
+
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
@@ -972,20 +972,20 @@ var createSimonBlock = function(simon) {
 			// Set up timer if it's the first trial
 			if (block_trial_count == 0) {
 				block_time_limit = practice == 1 ? practice_duration : main_duration;
-				block_start = Date.now();			
-	
+				block_start = Date.now();
+
 				end_timer = setTimeout(function() {
-	
+
 					block_trial_count = 0;
 					timeout = 1;
-					
+
 					// console.log("Block timed out at this trial", block_trial_count, timeout); // Here to debug
-							
+
 					// this function is all you need to end the current timeline
 					jsPsych.endCurrentTimeline();
-					
+
 				}, block_time_limit);
-			}		
+			}
 		},
 		on_load: function() {
 			countdown(block_start, block_time_limit);
@@ -1014,11 +1014,11 @@ var createSimonBlock = function(simon) {
 			}
 
 			data.score_after_trial = total_simon;
-			
+
 			// console.log(data, block_time_limit - (Date.now()-block_start), (Date.now() - block_start)) // Here to debug
 		}
 	}
-	
+
 	var feedback_simon = {
 		type: jsPsychHtmlButtonResponse,
 		stimulus: function() { return display_simon(simon[block_trial_count]); },
@@ -1026,7 +1026,7 @@ var createSimonBlock = function(simon) {
 		button_html: function() {
 			var resp = jsPsych.data.get().last(1).values()[0].response;
 			var correct_response = jsPsych.data.get().last(1).values()[0].correct_response;
-	
+
 			switch (resp) {
 				case 0:
 					var feedback1 = correct_response == 0 ? '<div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>' : '<div style="color: red; font-size: 34pt; font-weight: 200;">&#10008;</div>';
@@ -1037,10 +1037,10 @@ var createSimonBlock = function(simon) {
 					var feedback2 = correct_response == 1 ? '<div style="color: #1ED760; font-size: 34pt; font-weight: 200;">&#10004;</div>' : '<div style="color: red; font-size: 34pt; font-weight: 200;">&#10008;</div>';
 					break;
 			}
-	
+
 			var choice1 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: white;">' + feedback1 + '%choice%</button>'
 			var choice2 = '<button class="choiceStyle" style="font-family: Open Sans; font-weight: 1000; color: white;">' + feedback2 + '%choice%</button>'
-	
+
 			return [choice1, choice2];
 		},
 		margin_horizontal: '53px',
@@ -1049,12 +1049,12 @@ var createSimonBlock = function(simon) {
 		},
 		on_load: function() {
 			countdown(block_start, block_time_limit);
-			
+
 		},
 		trial_duration: 500,
 		response_ends_trial: false
 	}
-	
+
 	var block_simon = {
 		timeline: [trial_simon, feedback_simon],
 		loop_function: function() {
