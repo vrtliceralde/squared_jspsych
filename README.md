@@ -4,7 +4,7 @@ For questions about this specific implementation, please email Van at vrtliceral
 
 For questions about the task in general, please refer to the original [Burgoyne et al. (2023)](https://doi.org/10.1037/xge0001408) paper or reach out to Alex Burgoyne directly.
 
-Please cite this version of the task as follows:
+When using this task, please cite Burgoyne et al. (2023) and this version of the task as follows:
 
 Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://zenodo.org/badge/latestdoi/686735951
 
