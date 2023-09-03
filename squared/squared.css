@@ -1,0 +1,67 @@
+p {
+	/* font-family: Arial; */
+	font-size: 25px
+}
+
+input[type=text] {
+    color: black;
+}
+  
+body {
+    background-color: black;
+}
+
+#countdownbar {
+    width: 600px;
+    height: 20px;
+    background-color: #dddddd;
+    top: 10px;
+    margin: auto;
+    display: inline-block;
+    
+}
+
+#timeleft { 
+    height: 20px;
+    background-color: #04AA6D;
+    top: 10px;
+}
+
+.space {
+    width: 90px; /* 300 for stroop; 150px for flanker */
+    height: auto;
+    display: inline-block;
+}
+
+.choiceStyle {
+	background-color: black; 
+	/* border: 2px solid white; */
+    width: 305px; /* 200px for stroop; 350px for flanker */;
+	/* color: white; 
+	padding: 5px 10px; */
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+    font-size: 54pt;
+    outline: none;
+	cursor: pointer;
+	}
+
+.defaultButton {
+    width: 250px; 
+    padding: 10px 10px; 
+    font-size: 12pt; 
+    background-color: #d0d0d0;
+    font-family: Open Sans;
+    font-weight: 700;
+    border: 2px solid #dddddd;
+    
+}
+
+.defaultButton:hover, .defaultButton:focus {
+	background-color: #eeeeee; 
+}
+
+.jspsych-display-element {
+    color: white;
+}
