@@ -35,15 +35,15 @@ The contents of `squared` directory are as follows:
 | `squared.html` | The main executable file. Could be opened using any web browser. |
 | `squared.js`   | The main jsPsych script. Contains the implementation of the tasks, and this file is called in `squared.html` |
 | `squared.css`	 | CSS script containing formatting options to keep interface as similar to the original Burgoyne et al. programs |
-| `*.png`        | Image files for Flanker and Simon tasks that are called in squared.js |
+| `*.png`        | Image files for Flanker and Simon tasks that are called in `squared.js` |
 
 ## How to run
 
 The user has the option to run the program locally or through an online experiment hosting site (e.g., cognition.run, gorilla.sc).
 
-At start-up (after collecting participant ID), the user will be prompted on whether the program is being run online or locally. If local is selected, the participant's data will be saved and downloaded into the local console. If online is selected, the hosting site will keep the data. If the program is run online and local is selected, the program will save the data and downloaded into the remote participant's console (which is not ideal).
+At start-up (after collecting participant ID), the user will be prompted on whether the program is being run online or locally. If `local` is selected, the participant's data will be saved and downloaded into the local console. If `online` is selected, the hosting site will keep the data. If the program is run online and local is selected, the program will save the data and downloaded into the remote participant's console (which is not ideal).
 
-***If the program is run locally, but online is selected, data will NOT be saved.***
+***If the program is run locally, but `online` is selected, data will NOT be saved.***
 
 You can implement a default of running the task online by commenting out the `get_location` object in `squared.js`.
 
@@ -133,7 +133,7 @@ The following variables are included in the output of the Squared tasks from the
 
     This is due to the how the `endCurrentTimeline()` function in jsPsych works: when the current timeline is ended, the program also waits for the current trial to end before moving on to the next timeline. So hypothetically, a new trial can appear at 29.9 sec of the 30-sec practice block (i.e., just as the block is supposed to time out), and the program would wait for a response before moving on the next part of the program, making the practice block technically last for more than 30 sec. Apparently, in jsPsych v7.3.1, that's just how it is (or we haven't gotten a solution).
 
-    To work around this glitch, we had implemented for the `timeout` variable to be updated from 0 to 1 when the time limit is hit, so that even when a response is technically accepted after the time limit, the associated `timeout` value for that "last" trial is 1 and these trials can filtered out before any analysis. Moreover, these timeout trials have been marked with a `block_trial_count` of 0 to further distinguish them from valid trials. Note that the final value of the `score_after_trial` variable is based on the final valid trial---it is not changed at the timeout trial, so you can take the final value as the participant's actual score for the task. All of the score_x and meanrt_x variables are also only based on the valid trials.
+    To work around this glitch, we had implemented for the `timeout` variable to be updated from 0 to 1 when the time limit is hit, so that even when a response is technically accepted after the time limit, the associated `timeout` value for that "last" trial is 1 and these trials can filtered out before any analysis. Moreover, these timeout trials have been marked with a `block_trial_count` of 0 to further distinguish them from valid trials. Note that the final value of the `score_after_trial` variable is based on the final valid trial---it is not changed at the timeout trial, so you can take the final value as the participant's actual score for the task. All of the `score_x` and `meanrt_x` variables are also only based on the valid trials.
 
    Long story short, this shouldn't be a problem.
 
