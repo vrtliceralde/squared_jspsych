@@ -82,7 +82,7 @@ All `.csv` files contain the following variables:
 | `internal_node_id`	|	string | jsPsych-specific marker of the location of the current trial in the experiment sequence |
 | `participant_id`	|		string | unique identifier for participant, collected at start-up |
 | `task`	|			string | one of the three squared tasks; `stroop`, `flanker`, `simon` |
-| `block_trial_count`	|	numeric | cumulative trial count within the practice and main blocks; `0`: the task timed out at that trial refer to this variable for what counts as a "trial" in the task |
+| `block_trial_count`	|	numeric | cumulative trial count within the practice and main blocks; refer to this variable for what counts as a "trial" in the task; `0`: the task timed out at that trial |
 | `practice`	|		numeric | indicator for whether the trial was seen in the practice block; `0`: main block, `1`: practice block |
 | `item`	|		numeric | identifier for the type of trial shown to the participant |
 | `stim`	|			string | the string prompt shown to the participant |
