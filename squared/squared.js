@@ -9,7 +9,7 @@
 			  response was correct
 
 References:
-Liceralde, V.R.T. & Burgoyne, A.P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://zenodo.org/badge/latestdoi/686735951
+Liceralde, V.R.T. & Burgoyne, A.P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.8313315
 
 Burgoyne, A.P., Tsukahara, J.S., Mashburn, C.A., Pak, R., & Engle, R.W. (2023). Nature and measurement of attention control. Journal of Experimental Psychology: General. 152(8), 2369-2402. https://doi.org/10.1037/xge0001408
 (under review when task was first ported by VL)

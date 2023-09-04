@@ -6,7 +6,7 @@ For questions about the task in general, please refer to the original [Burgoyne 
 
 When using this task, please cite Burgoyne et al. (2023) and this version of the task as follows:
 
-Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://zenodo.org/badge/latestdoi/686735951
+Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control for jsPsych (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.8313315
 
 ```
 @misc{liceralde23squared,
