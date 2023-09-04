@@ -13,7 +13,7 @@ Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention control
   author = {Van Rynald T. Liceralde and Alexander P. Burgoyne},
   year = {2023},
   title = {Squared tasks of attention control for {jsPsych}},
-  howpublished = {\url{https://zenodo.org/badge/latestdoi/686735951}}
+  howpublished = {\url{https://doi.org/10.5281/zenodo.8313315}}
 }
 ```
 
